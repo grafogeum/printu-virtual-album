@@ -1,5 +1,5 @@
 import { CanvasDataContainer } from "../containers/CanvasData";
-import { ProjectSearch } from "../components/ProjectSearch";
+import { ProjectSearch } from "../components";
 
 const HomeScreenStyle = {
   height: "100vh",

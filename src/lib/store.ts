@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "@redux-saga/core";
-import { CanvasData, GetCanvasDataActionType, WrappedCanvasData } from "../constants/types";
+import { CanvasData, GetCanvasDataActionType, WrappedCanvasData, API_URL_PROJECT } from "../constants";
 import { getCanvasData } from "./api";
 import { put, takeEvery } from "redux-saga/effects";
 import { GET_CANVAS_DATA, CANVAS_DATA_FETCHED_SUCCEEDED, CANVAS_DATA_FETCHED_FAILED } from "../actions/actionTypes";
@@ -20,7 +20,7 @@ function* getCanvasDataAction(action: GetCanvasDataAction): GetCanvasDataActionT
   let success = true;
 
   try {
-    const projectResponse = yield fetch(`http://recruitment01.vercel.app/api/project/${id}`);
+    const projectResponse = yield fetch(`${API_URL_PROJECT}${id}`);
     if (!projectResponse.ok) {
       success = false;
     } else {

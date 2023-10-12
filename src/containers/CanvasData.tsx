@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectCanvasData } from "../lib/store";
-import { AlbumRenderer } from "../components/AlbumRenderer";
+import { AlbumRenderer } from "../components";
 import { CanvasData } from "../constants/types";
 import { isValidData } from "../helpers/helpers";
 
