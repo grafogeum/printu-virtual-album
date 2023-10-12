@@ -10,24 +10,28 @@ type WrappedCanvasData = {
   isLoading: boolean;
 };
 
-export const CanvasDataContainer = () => {
-  const { data, error, isLoading } = useSelector(selectCanvasData) as WrappedCanvasData;
+const withErrorAndLoading = (WrappedComponent: React.ComponentType<{ canvasData: CanvasData }>) => {
+  return (props: Record<string, unknown>) => {
+    const { data, error, isLoading } = useSelector(selectCanvasData) as WrappedCanvasData;
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    }
 
-  if (Object.keys(data).length === 0) {
-    return <>Empty</>;
-  }
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+    if (Object.keys(data).length === 0) {
+      return <>Empty</>;
+    }
 
-  if (isValidData(data)) {
-    return <AlbumRenderer canvasData={data as CanvasData} />;
-  } else {
-    return <div>Error: 🙅🏻‍♂️Bad data</div>;
-  }
+    if (isValidData(data)) {
+      return <WrappedComponent {...props} canvasData={data as CanvasData} />;
+    } else {
+      return <div>Error: 🙅🏻‍♂️Bad data</div>;
+    }
+  };
 };
+
+export const CanvasDataContainer = withErrorAndLoading(AlbumRenderer);
