@@ -74,7 +74,7 @@ export const calculateFrameDimensions = (
   return { frameWidth, frameHeight, frameX, frameY };
 };
 
-function isValidItem(item: Items) {
+export function isValidItem(item: Items) {
   return (
     typeof item.id === "string" &&
     typeof item.x === "number" &&

@@ -48,10 +48,10 @@ const initialState: WrappedCanvasData = {
 const reducer = (
   state: WrappedCanvasData = initialState,
   action: {
-    type: ActionTypes;
+    error: Error;
     isLoading: boolean;
     payload: CanvasData;
-    error: Error;
+    type: ActionTypes;
   }
 ) => {
   switch (action.type) {

@@ -9,6 +9,7 @@ const MainCanvasStyle = {
 
 export const AlbumRenderer: FC<{ canvasData: CanvasData }> = ({ canvasData }) => {
   const { project } = canvasData;
+
   return (
     <div style={MainCanvasStyle}>
       <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">

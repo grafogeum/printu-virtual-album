@@ -3,30 +3,32 @@ import { PutEffect } from "redux-saga/effects";
 export type CanvasData = {
   id: string;
   project: {
+    height: number;
     id: string;
+    items: Items[];
     name: string;
     width: number;
-    height: number;
-    items: Items[];
   };
 };
 
 export type Items = {
-  id: string;
-  type: "rectangle" | "ellipse";
   color: string;
+  height: number;
+  id: string;
   rotation: number;
+  type: "rectangle" | "ellipse";
+  width: number;
   x: number;
   y: number;
-  width: number;
-  height: number;
 };
 
+export type ItemShape = Pick<Items, "width" | "height" | "color">;
+
 type FetchDataResponse = {
-  ok: boolean;
   json: () => Promise<void>;
-  status: number;
   message: string;
+  ok: boolean;
+  status: number;
 };
 
 export type GetCanvasDataActionType = Generator<
