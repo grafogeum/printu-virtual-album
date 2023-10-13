@@ -4,6 +4,31 @@
 
 The "virtual-album" project. Below are the details regarding dependencies, scripts, configuration, and browser lists.
 
+## 📦 Online version - <span style="color: #44a344; " >[Deployed App](https://grafogeum.github.io/printu-virtual-album/)</span>  
+
+### Scripts
+
+- **Start the project:** `yarn start`
+  Starts the development server for the project.
+
+- **Build the project:** `yarn build`
+  Builds the project for production deployment.
+
+- **Test the project:** `yarn test`
+  Runs tests for the project.
+
+  - **Deploy online:** `yarn online`
+  Builds the project and deploys it online.
+
+- **Predeploy:** `yarn predeploy`
+  Prepares the project for deployment.
+
+- **Deploy:** `yarn deploy`
+  Deploys the project to the hosting service.
+
+- **Eject configuration:** `yarn eject`
+  Ejects the configuration for advanced customization.
+
 ### Version
 
 - Project Name: virtual-album
@@ -34,13 +59,6 @@ The "virtual-album" project. Below are the details regarding dependencies, scrip
 - @types/react: 18.2.27
 - @types/react-dom: 18.2.12
 
-### Scripts
-
-- Start the project: `yarn start`
-- Build the project: `yarn build`
-- Test the project: `yarn test`
-- Eject configuration: `yarn eject`
-
 ### ESLint Configuration
 
 The project uses an ESLint configuration that extends the "react-app" and "react-app/jest" configurations.
@@ -50,4 +68,3 @@ The project uses an ESLint configuration that extends the "react-app" and "react
 #### Production
 
 - Project is not optimized in any way except it's default build in bundlers
-
