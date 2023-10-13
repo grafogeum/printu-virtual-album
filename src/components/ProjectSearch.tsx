@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "./ui/Button";
 import { selectCanvasData } from "../lib/store";
+import { CanvasData } from "../constants";
 
 const BasicStyle = {
   color: "#000000",
@@ -13,10 +14,17 @@ const BasicStyle = {
   margin: "10px 0px",
 };
 
+const CurrentIDInputStyle = {
+  ...BasicStyle,
+};
+
 export const ProjectSearch = () => {
   const dispatch = useDispatch();
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const { isLoading } = useSelector(selectCanvasData) as { isLoading: boolean };
+  const {
+    isLoading,
+    data: { project },
+  } = useSelector(selectCanvasData) as { isLoading: boolean; data: Pick<CanvasData, "project"> };
 
   const getCanvasData = () => {
     const id = inputRef.current?.value;
@@ -29,6 +37,14 @@ export const ProjectSearch = () => {
       <Button onClick={getCanvasData} disabled={isLoading}>
         Fetch
       </Button>
+      <div>
+        {project?.name && <h4>Name: {project.name}</h4>}
+        {project?.id && (
+          <div>
+            <input readOnly style={CurrentIDInputStyle} type="text" value={project.id} />{" "}
+          </div>
+        )}
+      </div>
     </>
   );
 };
